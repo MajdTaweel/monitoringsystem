@@ -1,0 +1,10 @@
+{
+  "monitoringsystemApp": {
+    "SensingNodeStatus": {
+      "null": "",
+      "Online": "Online",
+      "WaitingForConfig": "WaitingForConfig",
+      "Offline": "Offline"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "monitoringsystemApp": {
+    "sensingNode": {
+      "home": {
+        "title": "Sensing Nodes",
+        "createLabel": "Create a new Sensing Node",
+        "createOrEditLabel": "Create or edit a Sensing Node",
+        "notFound": "No Sensing Nodes found"
+      },
+      "created": "A new Sensing Node is created with identifier {{ param }}",
+      "updated": "A Sensing Node is updated with identifier {{ param }}",
+      "deleted": "A Sensing Node is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sensing Node {{ id }}?"
+      },
+      "detail": {
+        "title": "Sensing Node"
+      },
+      "snid": "Snid",
+      "sensingNodeType": "Sensing Node Type",
+      "status": "Status",
+      "battery": "Battery",
+      "user": "User",
+      "magnetometerReadings": "Magnetometer Readings",
+      "pollutionReadings": "Pollution Readings"
+    }
+  }
+}

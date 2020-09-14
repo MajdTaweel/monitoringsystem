@@ -1,0 +1,67 @@
+application {
+  config {
+    baseName monitoringsystem,
+    packageName edu.birzeit.monitoringsystem,
+    applicationType monolith,
+    devDatabaseType postgresql,
+    prodDatabaseType postgresql,
+	enableTranslation true,
+	languages [en, ar-ly],
+    authenticationType jwt,
+    buildTool maven,
+    cacheProvider ehcache,
+    testFrameworks [protractor],
+    useSass true,
+    enableSwaggerCodegen true
+  }
+  entities SensingNode, MagnetometerReadings, PollutionReadings
+}
+
+enum SensingNodeStatus {
+	Online,
+    WaitingForConfig,
+    Offline
+}
+
+enum SensingNodeType {
+	Magnetometer,
+    Pollution
+}
+
+entity SensingNode {
+	snid String required
+    sensingNodeType SensingNodeType required
+    status SensingNodeStatus
+    battery Double
+}
+
+entity MagnetometerReadings {
+	x Double required
+    y Double required
+    z Double required
+}
+
+entity PollutionReadings {
+	co2 Double
+    sound Double
+}
+
+relationship OneToOne {
+	SensingNode to User
+}
+
+relationship OneToMany {
+	SensingNode to MagnetometerReadings,
+    SensingNode to PollutionReadings
+}
+
+dto * with mapstruct
+service * with serviceImpl
+
+// will be created under 'docker-compose' folder
+deployment {
+  deploymentType docker-compose
+  appsFolders [bzusmartcity]
+  dockerRepositoryName "majdtaweel"
+  consoleOptions [zipkin]
+}

@@ -1,0 +1,18 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": [
+      "bzusmartcity"
+    ],
+    "clusteredDbApps": [],
+    "consoleOptions": [
+      "zipkin"
+    ],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "majdtaweel",
+    "dockerPushCommand": "docker push"
+  }
+}

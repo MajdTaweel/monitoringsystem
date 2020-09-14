@@ -1,0 +1,58 @@
+{
+  "name": "SensingNode",
+  "fields": [
+    {
+      "fieldName": "snid",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sensingNodeType",
+      "fieldType": "SensingNodeType",
+      "fieldValues": "Magnetometer,Pollution",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "SensingNodeStatus",
+      "fieldValues": "Online,WaitingForConfig,Offline"
+    },
+    {
+      "fieldName": "battery",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "sensingNode",
+      "relationshipName": "user",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "magnetometerReadings",
+      "otherEntityRelationshipName": "sensingNode",
+      "relationshipName": "magnetometerReadings"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pollutionReadings",
+      "otherEntityRelationshipName": "sensingNode",
+      "relationshipName": "pollutionReadings"
+    }
+  ],
+  "changelogDate": "20200914125839",
+  "entityTableName": "sensing_node",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["monitoringsystem"]
+}

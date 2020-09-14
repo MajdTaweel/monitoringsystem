@@ -1,0 +1,33 @@
+{
+  "name": "PollutionReadings",
+  "fields": [
+    {
+      "fieldName": "co2",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "sound",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sensingNode",
+      "otherEntityRelationshipName": "pollutionReadings",
+      "relationshipName": "sensingNode",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200914130039",
+  "entityTableName": "pollution_readings",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["monitoringsystem"]
+}

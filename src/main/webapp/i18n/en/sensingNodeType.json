@@ -1,0 +1,9 @@
+{
+  "monitoringsystemApp": {
+    "SensingNodeType": {
+      "null": "",
+      "Magnetometer": "Magnetometer",
+      "Pollution": "Pollution"
+    }
+  }
+}

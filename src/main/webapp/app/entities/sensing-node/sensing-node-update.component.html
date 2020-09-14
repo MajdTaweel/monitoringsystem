@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-sensing-node-heading" jhiTranslate="monitoringsystemApp.sensingNode.home.createOrEditLabel">Create or edit a Sensing Node</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.snid" for="field_snid">Snid</label>
+                    <input type="text" class="form-control" name="snid" id="field_snid"
+                           formControlName="snid"/>
+                    <div *ngIf="editForm.get('snid')!.invalid && (editForm.get('snid')!.dirty || editForm.get('snid')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('snid')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.sensingNodeType" for="field_sensingNodeType">Sensing Node Type</label>
+                    <select class="form-control" name="sensingNodeType" formControlName="sensingNodeType" id="field_sensingNodeType">
+                        <option value="Magnetometer">{{ 'monitoringsystemApp.SensingNodeType.Magnetometer' | translate }}</option>
+                        <option value="Pollution">{{ 'monitoringsystemApp.SensingNodeType.Pollution' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('sensingNodeType')!.invalid && (editForm.get('sensingNodeType')!.dirty || editForm.get('sensingNodeType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sensingNodeType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="Online">{{ 'monitoringsystemApp.SensingNodeStatus.Online' | translate }}</option>
+                        <option value="WaitingForConfig">{{ 'monitoringsystemApp.SensingNodeStatus.WaitingForConfig' | translate }}</option>
+                        <option value="Offline">{{ 'monitoringsystemApp.SensingNodeStatus.Offline' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.battery" for="field_battery">Battery</label>
+                    <input type="number" class="form-control" name="battery" id="field_battery"
+                           formControlName="battery"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

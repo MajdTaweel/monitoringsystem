@@ -1,0 +1,105 @@
+package edu.birzeit.monitoringsystem.service.dto;
+
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import edu.birzeit.monitoringsystem.domain.enumeration.SensingNodeType;
+import edu.birzeit.monitoringsystem.domain.enumeration.SensingNodeStatus;
+
+/**
+ * A DTO for the {@link edu.birzeit.monitoringsystem.domain.SensingNode} entity.
+ */
+public class SensingNodeDTO implements Serializable {
+    
+    private Long id;
+
+    @NotNull
+    private String snid;
+
+    @NotNull
+    private SensingNodeType sensingNodeType;
+
+    private SensingNodeStatus status;
+
+    private Double battery;
+
+
+    private Long userId;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSnid() {
+        return snid;
+    }
+
+    public void setSnid(String snid) {
+        this.snid = snid;
+    }
+
+    public SensingNodeType getSensingNodeType() {
+        return sensingNodeType;
+    }
+
+    public void setSensingNodeType(SensingNodeType sensingNodeType) {
+        this.sensingNodeType = sensingNodeType;
+    }
+
+    public SensingNodeStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(SensingNodeStatus status) {
+        this.status = status;
+    }
+
+    public Double getBattery() {
+        return battery;
+    }
+
+    public void setBattery(Double battery) {
+        this.battery = battery;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof SensingNodeDTO)) {
+            return false;
+        }
+
+        return id != null && id.equals(((SensingNodeDTO) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "SensingNodeDTO{" +
+            "id=" + getId() +
+            ", snid='" + getSnid() + "'" +
+            ", sensingNodeType='" + getSensingNodeType() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", battery=" + getBattery() +
+            ", userId=" + getUserId() +
+            "}";
+    }
+}
