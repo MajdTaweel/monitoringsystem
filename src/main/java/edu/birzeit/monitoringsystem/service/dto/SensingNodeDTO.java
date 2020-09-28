@@ -13,14 +13,11 @@ public class SensingNodeDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String snid;
-
-    @NotNull
     private SensingNodeType sensingNodeType;
 
     private SensingNodeStatus status;
 
-    private Double battery;
+    private Double batteryLife;
 
 
     private Long userId;
@@ -31,14 +28,6 @@ public class SensingNodeDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSnid() {
-        return snid;
-    }
-
-    public void setSnid(String snid) {
-        this.snid = snid;
     }
 
     public SensingNodeType getSensingNodeType() {
@@ -57,12 +46,12 @@ public class SensingNodeDTO implements Serializable {
         this.status = status;
     }
 
-    public Double getBattery() {
-        return battery;
+    public Double getBatteryLife() {
+        return batteryLife;
     }
 
-    public void setBattery(Double battery) {
-        this.battery = battery;
+    public void setBatteryLife(Double batteryLife) {
+        this.batteryLife = batteryLife;
     }
 
     public Long getUserId() {
@@ -95,10 +84,9 @@ public class SensingNodeDTO implements Serializable {
     public String toString() {
         return "SensingNodeDTO{" +
             "id=" + getId() +
-            ", snid='" + getSnid() + "'" +
             ", sensingNodeType='" + getSensingNodeType() + "'" +
             ", status='" + getStatus() + "'" +
-            ", battery=" + getBattery() +
+            ", batteryLife=" + getBatteryLife() +
             ", userId=" + getUserId() +
             "}";
     }

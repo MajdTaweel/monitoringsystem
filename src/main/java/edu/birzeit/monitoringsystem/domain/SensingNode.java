@@ -30,10 +30,6 @@ public class SensingNode implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "snid", nullable = false)
-    private String snid;
-
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "sensing_node_type", nullable = false)
     private SensingNodeType sensingNodeType;
@@ -42,8 +38,8 @@ public class SensingNode implements Serializable {
     @Column(name = "status")
     private SensingNodeStatus status;
 
-    @Column(name = "battery")
-    private Double battery;
+    @Column(name = "battery_life")
+    private Double batteryLife;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -64,19 +60,6 @@ public class SensingNode implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSnid() {
-        return snid;
-    }
-
-    public SensingNode snid(String snid) {
-        this.snid = snid;
-        return this;
-    }
-
-    public void setSnid(String snid) {
-        this.snid = snid;
     }
 
     public SensingNodeType getSensingNodeType() {
@@ -105,17 +88,17 @@ public class SensingNode implements Serializable {
         this.status = status;
     }
 
-    public Double getBattery() {
-        return battery;
+    public Double getBatteryLife() {
+        return batteryLife;
     }
 
-    public SensingNode battery(Double battery) {
-        this.battery = battery;
+    public SensingNode batteryLife(Double batteryLife) {
+        this.batteryLife = batteryLife;
         return this;
     }
 
-    public void setBattery(Double battery) {
-        this.battery = battery;
+    public void setBatteryLife(Double batteryLife) {
+        this.batteryLife = batteryLife;
     }
 
     public User getUser() {
@@ -203,10 +186,9 @@ public class SensingNode implements Serializable {
     public String toString() {
         return "SensingNode{" +
             "id=" + getId() +
-            ", snid='" + getSnid() + "'" +
             ", sensingNodeType='" + getSensingNodeType() + "'" +
             ", status='" + getStatus() + "'" +
-            ", battery=" + getBattery() +
+            ", batteryLife=" + getBatteryLife() +
             "}";
     }
 }

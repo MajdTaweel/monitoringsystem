@@ -34,17 +34,14 @@ import edu.birzeit.monitoringsystem.domain.enumeration.SensingNodeStatus;
 @WithMockUser
 public class SensingNodeResourceIT {
 
-    private static final String DEFAULT_SNID = "AAAAAAAAAA";
-    private static final String UPDATED_SNID = "BBBBBBBBBB";
-
     private static final SensingNodeType DEFAULT_SENSING_NODE_TYPE = SensingNodeType.Magnetometer;
     private static final SensingNodeType UPDATED_SENSING_NODE_TYPE = SensingNodeType.Pollution;
 
     private static final SensingNodeStatus DEFAULT_STATUS = SensingNodeStatus.Online;
     private static final SensingNodeStatus UPDATED_STATUS = SensingNodeStatus.WaitingForConfig;
 
-    private static final Double DEFAULT_BATTERY = 1D;
-    private static final Double UPDATED_BATTERY = 2D;
+    private static final Double DEFAULT_BATTERY_LIFE = 1D;
+    private static final Double UPDATED_BATTERY_LIFE = 2D;
 
     @Autowired
     private SensingNodeRepository sensingNodeRepository;
@@ -71,10 +68,9 @@ public class SensingNodeResourceIT {
      */
     public static SensingNode createEntity(EntityManager em) {
         SensingNode sensingNode = new SensingNode()
-            .snid(DEFAULT_SNID)
             .sensingNodeType(DEFAULT_SENSING_NODE_TYPE)
             .status(DEFAULT_STATUS)
-            .battery(DEFAULT_BATTERY);
+            .batteryLife(DEFAULT_BATTERY_LIFE);
         return sensingNode;
     }
     /**
@@ -85,10 +81,9 @@ public class SensingNodeResourceIT {
      */
     public static SensingNode createUpdatedEntity(EntityManager em) {
         SensingNode sensingNode = new SensingNode()
-            .snid(UPDATED_SNID)
             .sensingNodeType(UPDATED_SENSING_NODE_TYPE)
             .status(UPDATED_STATUS)
-            .battery(UPDATED_BATTERY);
+            .batteryLife(UPDATED_BATTERY_LIFE);
         return sensingNode;
     }
 
@@ -112,10 +107,9 @@ public class SensingNodeResourceIT {
         List<SensingNode> sensingNodeList = sensingNodeRepository.findAll();
         assertThat(sensingNodeList).hasSize(databaseSizeBeforeCreate + 1);
         SensingNode testSensingNode = sensingNodeList.get(sensingNodeList.size() - 1);
-        assertThat(testSensingNode.getSnid()).isEqualTo(DEFAULT_SNID);
         assertThat(testSensingNode.getSensingNodeType()).isEqualTo(DEFAULT_SENSING_NODE_TYPE);
         assertThat(testSensingNode.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testSensingNode.getBattery()).isEqualTo(DEFAULT_BATTERY);
+        assertThat(testSensingNode.getBatteryLife()).isEqualTo(DEFAULT_BATTERY_LIFE);
     }
 
     @Test
@@ -138,26 +132,6 @@ public class SensingNodeResourceIT {
         assertThat(sensingNodeList).hasSize(databaseSizeBeforeCreate);
     }
 
-
-    @Test
-    @Transactional
-    public void checkSnidIsRequired() throws Exception {
-        int databaseSizeBeforeTest = sensingNodeRepository.findAll().size();
-        // set the field null
-        sensingNode.setSnid(null);
-
-        // Create the SensingNode, which fails.
-        SensingNodeDTO sensingNodeDTO = sensingNodeMapper.toDto(sensingNode);
-
-
-        restSensingNodeMockMvc.perform(post("/api/sensing-nodes")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(sensingNodeDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<SensingNode> sensingNodeList = sensingNodeRepository.findAll();
-        assertThat(sensingNodeList).hasSize(databaseSizeBeforeTest);
-    }
 
     @Test
     @Transactional
@@ -190,10 +164,9 @@ public class SensingNodeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(sensingNode.getId().intValue())))
-            .andExpect(jsonPath("$.[*].snid").value(hasItem(DEFAULT_SNID)))
             .andExpect(jsonPath("$.[*].sensingNodeType").value(hasItem(DEFAULT_SENSING_NODE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-            .andExpect(jsonPath("$.[*].battery").value(hasItem(DEFAULT_BATTERY.doubleValue())));
+            .andExpect(jsonPath("$.[*].batteryLife").value(hasItem(DEFAULT_BATTERY_LIFE.doubleValue())));
     }
     
     @Test
@@ -207,10 +180,9 @@ public class SensingNodeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(sensingNode.getId().intValue()))
-            .andExpect(jsonPath("$.snid").value(DEFAULT_SNID))
             .andExpect(jsonPath("$.sensingNodeType").value(DEFAULT_SENSING_NODE_TYPE.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.battery").value(DEFAULT_BATTERY.doubleValue()));
+            .andExpect(jsonPath("$.batteryLife").value(DEFAULT_BATTERY_LIFE.doubleValue()));
     }
     @Test
     @Transactional
@@ -233,10 +205,9 @@ public class SensingNodeResourceIT {
         // Disconnect from session so that the updates on updatedSensingNode are not directly saved in db
         em.detach(updatedSensingNode);
         updatedSensingNode
-            .snid(UPDATED_SNID)
             .sensingNodeType(UPDATED_SENSING_NODE_TYPE)
             .status(UPDATED_STATUS)
-            .battery(UPDATED_BATTERY);
+            .batteryLife(UPDATED_BATTERY_LIFE);
         SensingNodeDTO sensingNodeDTO = sensingNodeMapper.toDto(updatedSensingNode);
 
         restSensingNodeMockMvc.perform(put("/api/sensing-nodes")
@@ -248,10 +219,9 @@ public class SensingNodeResourceIT {
         List<SensingNode> sensingNodeList = sensingNodeRepository.findAll();
         assertThat(sensingNodeList).hasSize(databaseSizeBeforeUpdate);
         SensingNode testSensingNode = sensingNodeList.get(sensingNodeList.size() - 1);
-        assertThat(testSensingNode.getSnid()).isEqualTo(UPDATED_SNID);
         assertThat(testSensingNode.getSensingNodeType()).isEqualTo(UPDATED_SENSING_NODE_TYPE);
         assertThat(testSensingNode.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testSensingNode.getBattery()).isEqualTo(UPDATED_BATTERY);
+        assertThat(testSensingNode.getBatteryLife()).isEqualTo(UPDATED_BATTERY_LIFE);
     }
 
     @Test

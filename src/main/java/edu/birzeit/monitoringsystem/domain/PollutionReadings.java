@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 
@@ -23,10 +24,12 @@ public class PollutionReadings implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "co_2")
+    @NotNull
+    @Column(name = "co_2", nullable = false)
     private Double co2;
 
-    @Column(name = "sound")
+    @NotNull
+    @Column(name = "sound", nullable = false)
     private Double sound;
 
     @ManyToOne

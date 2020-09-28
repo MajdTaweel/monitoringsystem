@@ -1,11 +1,11 @@
-id;snid;sensing_node_type;status;battery
-1;magenta Bedfordshire;Pollution;Offline;88850
-2;payment;Pollution;Offline;63688
-3;Interactions Applications;Pollution;WaitingForConfig;79518
-4;Avon;Magnetometer;WaitingForConfig;77225
-5;RAM payment Cayman Islands Dollar;Pollution;WaitingForConfig;78107
-6;Chips;Magnetometer;Offline;13607
-7;virtual;Magnetometer;Offline;35283
-8;Handmade Planner Keyboard;Magnetometer;Offline;34119
-9;Quality Baby;Pollution;Online;94938
-10;Berkshire;Pollution;Offline;35806
+id;sensing_node_type;status;battery_life
+1;Pollution;Online;75617
+2;Pollution;Offline;30192
+3;Pollution;Online;23545
+4;Pollution;Online;58422
+5;Pollution;WaitingForConfig;51097
+6;Magnetometer;Online;66347
+7;Pollution;Online;43852
+8;Magnetometer;WaitingForConfig;50712
+9;Pollution;Online;73853
+10;Pollution;WaitingForConfig;93535

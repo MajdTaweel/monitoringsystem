@@ -20,10 +20,9 @@ export class SensingNodeUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    snid: [null, [Validators.required]],
     sensingNodeType: [null, [Validators.required]],
     status: [],
-    battery: [],
+    batteryLife: [],
     userId: [],
   });
 
@@ -45,10 +44,9 @@ export class SensingNodeUpdateComponent implements OnInit {
   updateForm(sensingNode: ISensingNode): void {
     this.editForm.patchValue({
       id: sensingNode.id,
-      snid: sensingNode.snid,
       sensingNodeType: sensingNode.sensingNodeType,
       status: sensingNode.status,
-      battery: sensingNode.battery,
+      batteryLife: sensingNode.batteryLife,
       userId: sensingNode.userId,
     });
   }
@@ -71,10 +69,9 @@ export class SensingNodeUpdateComponent implements OnInit {
     return {
       ...new SensingNode(),
       id: this.editForm.get(['id'])!.value,
-      snid: this.editForm.get(['snid'])!.value,
       sensingNodeType: this.editForm.get(['sensingNodeType'])!.value,
       status: this.editForm.get(['status'])!.value,
-      battery: this.editForm.get(['battery'])!.value,
+      batteryLife: this.editForm.get(['batteryLife'])!.value,
       userId: this.editForm.get(['userId'])!.value,
     };
   }

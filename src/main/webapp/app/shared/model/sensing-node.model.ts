@@ -5,10 +5,9 @@ import { SensingNodeStatus } from 'app/shared/model/enumerations/sensing-node-st
 
 export interface ISensingNode {
   id?: number;
-  snid?: string;
   sensingNodeType?: SensingNodeType;
   status?: SensingNodeStatus;
-  battery?: number;
+  batteryLife?: number;
   userId?: number;
   magnetometerReadings?: IMagnetometerReadings[];
   pollutionReadings?: IPollutionReadings[];
@@ -17,10 +16,9 @@ export interface ISensingNode {
 export class SensingNode implements ISensingNode {
   constructor(
     public id?: number,
-    public snid?: string,
     public sensingNodeType?: SensingNodeType,
     public status?: SensingNodeStatus,
-    public battery?: number,
+    public batteryLife?: number,
     public userId?: number,
     public magnetometerReadings?: IMagnetometerReadings[],
     public pollutionReadings?: IPollutionReadings[]

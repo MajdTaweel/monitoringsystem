@@ -3,7 +3,6 @@ application {
     baseName monitoringsystem,
     packageName edu.birzeit.monitoringsystem,
     applicationType monolith,
-    devDatabaseType postgresql,
     prodDatabaseType postgresql,
 	enableTranslation true,
 	languages [en, ar-ly],
@@ -29,10 +28,9 @@ enum SensingNodeType {
 }
 
 entity SensingNode {
-	snid String required
     sensingNodeType SensingNodeType required
     status SensingNodeStatus
-    battery Double
+    batteryLife Double
 }
 
 entity MagnetometerReadings {
@@ -42,8 +40,8 @@ entity MagnetometerReadings {
 }
 
 entity PollutionReadings {
-	co2 Double
-    sound Double
+	co2 Double required
+    sound Double required
 }
 
 relationship OneToOne {
@@ -57,11 +55,3 @@ relationship OneToMany {
 
 dto * with mapstruct
 service * with serviceImpl
-
-// will be created under 'docker-compose' folder
-deployment {
-  deploymentType docker-compose
-  appsFolders [bzusmartcity]
-  dockerRepositoryName "majdtaweel"
-  consoleOptions [zipkin]
-}

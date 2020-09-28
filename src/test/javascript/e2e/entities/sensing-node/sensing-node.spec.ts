@@ -44,15 +44,13 @@ describe('SensingNode e2e test', () => {
     await sensingNodeComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      sensingNodeUpdatePage.setSnidInput('snid'),
       sensingNodeUpdatePage.sensingNodeTypeSelectLastOption(),
       sensingNodeUpdatePage.statusSelectLastOption(),
-      sensingNodeUpdatePage.setBatteryInput('5'),
+      sensingNodeUpdatePage.setBatteryLifeInput('5'),
       sensingNodeUpdatePage.userSelectLastOption(),
     ]);
 
-    expect(await sensingNodeUpdatePage.getSnidInput()).to.eq('snid', 'Expected Snid value to be equals to snid');
-    expect(await sensingNodeUpdatePage.getBatteryInput()).to.eq('5', 'Expected battery value to be equals to 5');
+    expect(await sensingNodeUpdatePage.getBatteryLifeInput()).to.eq('5', 'Expected batteryLife value to be equals to 5');
 
     await sensingNodeUpdatePage.save();
     expect(await sensingNodeUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

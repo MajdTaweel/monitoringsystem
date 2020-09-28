@@ -20,8 +20,8 @@ export class PollutionReadingsUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    co2: [],
-    sound: [],
+    co2: [null, [Validators.required]],
+    sound: [null, [Validators.required]],
     sensingNodeId: [],
   });
 

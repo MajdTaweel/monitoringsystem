@@ -22,7 +22,7 @@ describe('Service Tests', () => {
       service = injector.get(SensingNodeService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new SensingNode(0, 'AAAAAAA', SensingNodeType.Magnetometer, SensingNodeStatus.Online, 0);
+      elemDefault = new SensingNode(0, SensingNodeType.Magnetometer, SensingNodeStatus.Online, 0);
     });
 
     describe('Service methods', () => {
@@ -56,10 +56,9 @@ describe('Service Tests', () => {
       it('should update a SensingNode', () => {
         const returnedFromService = Object.assign(
           {
-            snid: 'BBBBBB',
             sensingNodeType: 'BBBBBB',
             status: 'BBBBBB',
-            battery: 1,
+            batteryLife: 1,
           },
           elemDefault
         );
@@ -76,10 +75,9 @@ describe('Service Tests', () => {
       it('should return a list of SensingNode', () => {
         const returnedFromService = Object.assign(
           {
-            snid: 'BBBBBB',
             sensingNodeType: 'BBBBBB',
             status: 'BBBBBB',
-            battery: 1,
+            batteryLife: 1,
           },
           elemDefault
         );

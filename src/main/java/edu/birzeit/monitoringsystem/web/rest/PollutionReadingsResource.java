@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -45,7 +46,7 @@ public class PollutionReadingsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/pollution-readings")
-    public ResponseEntity<PollutionReadingsDTO> createPollutionReadings(@RequestBody PollutionReadingsDTO pollutionReadingsDTO) throws URISyntaxException {
+    public ResponseEntity<PollutionReadingsDTO> createPollutionReadings(@Valid @RequestBody PollutionReadingsDTO pollutionReadingsDTO) throws URISyntaxException {
         log.debug("REST request to save PollutionReadings : {}", pollutionReadingsDTO);
         if (pollutionReadingsDTO.getId() != null) {
             throw new BadRequestAlertException("A new pollutionReadings cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +67,7 @@ public class PollutionReadingsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/pollution-readings")
-    public ResponseEntity<PollutionReadingsDTO> updatePollutionReadings(@RequestBody PollutionReadingsDTO pollutionReadingsDTO) throws URISyntaxException {
+    public ResponseEntity<PollutionReadingsDTO> updatePollutionReadings(@Valid @RequestBody PollutionReadingsDTO pollutionReadingsDTO) throws URISyntaxException {
         log.debug("REST request to update PollutionReadings : {}", pollutionReadingsDTO);
         if (pollutionReadingsDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

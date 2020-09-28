@@ -2,11 +2,6 @@
   "name": "SensingNode",
   "fields": [
     {
-      "fieldName": "snid",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
       "fieldName": "sensingNodeType",
       "fieldType": "SensingNodeType",
       "fieldValues": "Magnetometer,Pollution",
@@ -18,7 +13,7 @@
       "fieldValues": "Online,WaitingForConfig,Offline"
     },
     {
-      "fieldName": "battery",
+      "fieldName": "batteryLife",
       "fieldType": "Double"
     }
   ],

@@ -9,7 +9,7 @@
     "baseName": "monitoringsystem",
     "buildTool": "maven",
     "databaseType": "sql",
-    "devDatabaseType": "postgresql",
+    "devDatabaseType": "h2Disk",
     "enableHibernateCache": true,
     "enableSwaggerCodegen": true,
     "enableTranslation": true,

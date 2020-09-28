@@ -12,18 +12,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.snid" for="field_snid">Snid</label>
-                    <input type="text" class="form-control" name="snid" id="field_snid"
-                           formControlName="snid"/>
-                    <div *ngIf="editForm.get('snid')!.invalid && (editForm.get('snid')!.dirty || editForm.get('snid')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('snid')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.sensingNodeType" for="field_sensingNodeType">Sensing Node Type</label>
                     <select class="form-control" name="sensingNodeType" formControlName="sensingNodeType" id="field_sensingNodeType">
                         <option value="Magnetometer">{{ 'monitoringsystemApp.SensingNodeType.Magnetometer' | translate }}</option>
@@ -47,9 +35,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.battery" for="field_battery">Battery</label>
-                    <input type="number" class="form-control" name="battery" id="field_battery"
-                           formControlName="battery"/>
+                    <label class="form-control-label" jhiTranslate="monitoringsystemApp.sensingNode.batteryLife" for="field_batteryLife">Battery Life</label>
+                    <input type="number" class="form-control" name="batteryLife" id="field_batteryLife"
+                           formControlName="batteryLife"/>
                 </div>
 
                 <div class="form-group">

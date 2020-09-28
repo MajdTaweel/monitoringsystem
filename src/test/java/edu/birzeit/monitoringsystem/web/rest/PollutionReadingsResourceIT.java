@@ -127,6 +127,46 @@ public class PollutionReadingsResourceIT {
 
     @Test
     @Transactional
+    public void checkCo2IsRequired() throws Exception {
+        int databaseSizeBeforeTest = pollutionReadingsRepository.findAll().size();
+        // set the field null
+        pollutionReadings.setCo2(null);
+
+        // Create the PollutionReadings, which fails.
+        PollutionReadingsDTO pollutionReadingsDTO = pollutionReadingsMapper.toDto(pollutionReadings);
+
+
+        restPollutionReadingsMockMvc.perform(post("/api/pollution-readings")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(pollutionReadingsDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<PollutionReadings> pollutionReadingsList = pollutionReadingsRepository.findAll();
+        assertThat(pollutionReadingsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkSoundIsRequired() throws Exception {
+        int databaseSizeBeforeTest = pollutionReadingsRepository.findAll().size();
+        // set the field null
+        pollutionReadings.setSound(null);
+
+        // Create the PollutionReadings, which fails.
+        PollutionReadingsDTO pollutionReadingsDTO = pollutionReadingsMapper.toDto(pollutionReadings);
+
+
+        restPollutionReadingsMockMvc.perform(post("/api/pollution-readings")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(pollutionReadingsDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<PollutionReadings> pollutionReadingsList = pollutionReadingsRepository.findAll();
+        assertThat(pollutionReadingsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllPollutionReadings() throws Exception {
         // Initialize the database
         pollutionReadingsRepository.saveAndFlush(pollutionReadings);

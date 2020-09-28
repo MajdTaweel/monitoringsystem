@@ -29,23 +29,14 @@ export class SensingNodeUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  snidInput = element(by.id('field_snid'));
   sensingNodeTypeSelect = element(by.id('field_sensingNodeType'));
   statusSelect = element(by.id('field_status'));
-  batteryInput = element(by.id('field_battery'));
+  batteryLifeInput = element(by.id('field_batteryLife'));
 
   userSelect = element(by.id('field_user'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setSnidInput(snid: string): Promise<void> {
-    await this.snidInput.sendKeys(snid);
-  }
-
-  async getSnidInput(): Promise<string> {
-    return await this.snidInput.getAttribute('value');
   }
 
   async setSensingNodeTypeSelect(sensingNodeType: string): Promise<void> {
@@ -72,12 +63,12 @@ export class SensingNodeUpdatePage {
     await this.statusSelect.all(by.tagName('option')).last().click();
   }
 
-  async setBatteryInput(battery: string): Promise<void> {
-    await this.batteryInput.sendKeys(battery);
+  async setBatteryLifeInput(batteryLife: string): Promise<void> {
+    await this.batteryLifeInput.sendKeys(batteryLife);
   }
 
-  async getBatteryInput(): Promise<string> {
-    return await this.batteryInput.getAttribute('value');
+  async getBatteryLifeInput(): Promise<string> {
+    return await this.batteryLifeInput.getAttribute('value');
   }
 
   async userSelectLastOption(): Promise<void> {

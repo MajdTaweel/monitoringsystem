@@ -1,5 +1,6 @@
 package edu.birzeit.monitoringsystem.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 /**
@@ -9,8 +10,10 @@ public class PollutionReadingsDTO implements Serializable {
     
     private Long id;
 
+    @NotNull
     private Double co2;
 
+    @NotNull
     private Double sound;
 
 

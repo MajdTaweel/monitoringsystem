@@ -16,10 +16,9 @@
       "detail": {
         "title": "Sensing Node"
       },
-      "snid": "Snid",
       "sensingNodeType": "Sensing Node Type",
       "status": "Status",
-      "battery": "Battery",
+      "batteryLife": "Battery Life",
       "user": "User",
       "magnetometerReadings": "Magnetometer Readings",
       "pollutionReadings": "Pollution Readings"

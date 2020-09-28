@@ -8,10 +8,6 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="monitoringsystemApp.sensingNode.snid">Snid</span></dt>
-                <dd>
-                    <span>{{ sensingNode.snid }}</span>
-                </dd>
                 <dt><span jhiTranslate="monitoringsystemApp.sensingNode.sensingNodeType">Sensing Node Type</span></dt>
                 <dd>
                     <span jhiTranslate="{{ 'monitoringsystemApp.SensingNodeType.' + sensingNode.sensingNodeType }}">{{ sensingNode.sensingNodeType }}</span>
@@ -20,9 +16,9 @@
                 <dd>
                     <span jhiTranslate="{{ 'monitoringsystemApp.SensingNodeStatus.' + sensingNode.status }}">{{ sensingNode.status }}</span>
                 </dd>
-                <dt><span jhiTranslate="monitoringsystemApp.sensingNode.battery">Battery</span></dt>
+                <dt><span jhiTranslate="monitoringsystemApp.sensingNode.batteryLife">Battery Life</span></dt>
                 <dd>
-                    <span>{{ sensingNode.battery }}</span>
+                    <span>{{ sensingNode.batteryLife }}</span>
                 </dd>
                 <dt><span jhiTranslate="monitoringsystemApp.sensingNode.user">User</span></dt>
                 <dd>
